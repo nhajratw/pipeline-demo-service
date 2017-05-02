@@ -54,7 +54,6 @@ publishing {
     mavenJava(MavenPublication) {
       groupId 'com.chikli.pipelinedemo'
       artifactId jar.baseName
-      version jar.version
       from components.java
     }
 
