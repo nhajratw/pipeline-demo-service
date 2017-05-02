@@ -1,10 +1,10 @@
 buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
-    }
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+  }
 }
 
 apply plugin: 'java'
@@ -13,20 +13,32 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
 jar {
-    baseName = 'pipeline-demo-service'
-    version =  '0.1.0'
+  baseName = 'pipeline-demo-service'
+  version =  '0.1.0'
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-actuator")
-    testCompile("org.springframework.boot:spring-boot-starter-test")
-    testCompile("junit:junit")
+  compile("org.springframework.boot:spring-boot-starter-web")
+  compile("org.springframework.boot:spring-boot-starter-actuator")
+  testCompile("org.springframework.boot:spring-boot-starter-test")
+  testCompile("junit:junit")
+}
+
+test {
+  useJUnit() {
+    excludeCategories 'com.chikli.pipelinedemo.IntegrationTests'
+  }
+}
+
+task testIntegration(type: Test) {  
+  useJUnit {
+    includeCategories 'com.chikli.pipelinedemo.IntegrationTests'
+  }
 }
