@@ -42,3 +42,34 @@ task testIntegration(type: Test) {
     includeCategories 'com.chikli.pipelinedemo.IntegrationTests'
   }
 }
+
+/*
+apply plugin: 'maven-publish'
+
+publish {
+  dependsOn assemble
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      groupId 'com.chikli.pipelinedemo'
+      artifactId jar.baseName
+      from components.java
+    }
+
+  }
+  repositories {
+    maven {
+      url "http://localhost:8081/nexus/content/repositories/releases"
+      credentials {
+        username 'admin'
+        password 'admin123'
+      }
+      authentication{
+        basic(BasicAuthentication)
+      }
+    }
+  }
+}
+*/
