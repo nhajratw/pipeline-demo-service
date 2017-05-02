@@ -14,7 +14,7 @@ apply plugin: 'org.springframework.boot'
 
 jar {
   baseName = 'pipeline-demo-service'
-  version =  '0.1.0'
+  version =  'local'
 }
 
 sourceCompatibility = 1.8
@@ -40,5 +40,35 @@ test {
 task testIntegration(type: Test) {  
   useJUnit {
     includeCategories 'com.chikli.pipelinedemo.IntegrationTests'
+  }
+}
+
+apply plugin: 'maven-publish'
+
+publish {
+  dependsOn assemble
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      groupId 'com.chikli.pipelinedemo'
+      artifactId jar.baseName
+      version jar.version
+      from components.java
+    }
+
+  }
+  repositories {
+    maven {
+      url "http://localhost:8081/nexus/content/repositories/releases"
+      credentials {
+        username 'admin'
+        password 'admin123'
+      }
+      authentication{
+        basic(BasicAuthentication)
+      }
+    }
   }
 }
