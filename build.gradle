@@ -42,7 +42,7 @@ task testIntegration(type: Test) {
   }
 }
 
-/*
+
 apply plugin: 'maven-publish'
 
 publish {
@@ -71,4 +71,4 @@ publishing {
     }
   }
 }
-*/
+
