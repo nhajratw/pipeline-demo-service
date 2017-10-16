@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/cd")
 public class PipelineDemoController {
 	
-	@Autowired
 	private ResourceLoader resourceLoader;
+
+	@Autowired
+	public PipelineDemoController(ResourceLoader resourceLoader) {
+		this.resourceLoader = resourceLoader;
+	}
 
     @RequestMapping(method=RequestMethod.GET, produces="application/json")
     public @ResponseBody Resource cd() {
