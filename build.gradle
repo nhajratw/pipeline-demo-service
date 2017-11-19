@@ -30,19 +30,26 @@ dependencies {
   testCompile "org.springframework.boot:spring-boot-starter-test"
 }
 
+//
+// Ensure that `./gradlew test` only executes unit tests and
+//             `./gradlew intTest only executes integration tests
+//
 test {
   useJUnit() {
     excludeCategories 'com.chikli.pipelinedemo.IntegrationTests'
   }
 }
 
-task testIntegration(type: Test) {
+task integrationTest(type: Test) {
   useJUnit {
     includeCategories 'com.chikli.pipelinedemo.IntegrationTests'
   }
 }
 
-/*
+
+//
+// Set up publishing to Nexus
+//
 apply plugin: 'maven-publish'
 
 publish {
@@ -71,4 +78,3 @@ publishing {
     }
   }
 }
-*/
