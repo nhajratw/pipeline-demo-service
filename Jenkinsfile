@@ -13,5 +13,11 @@ pipeline {
         git url:'/Users/nayan/Documents/workspace/pipeline-demo/pipeline-demo-service', branch:'goat17'
       }
     }
+
+    stage('micro tests') {
+      steps {
+        sh "$WORKSPACE/gradlew test"
+      }
+    }
   }
 }
