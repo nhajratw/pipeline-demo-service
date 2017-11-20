@@ -25,7 +25,13 @@ pipeline {
 
     stage('create artifact') {
       steps {
-        sh "$WORKSPACE/gradlew -Pversion=${releaseVersion} assemble"
+        sh "$WORKSPACE/gradlew assemble -Pversion=${releaseVersion}"
+      }
+    }
+
+    stage('publish artifact') {
+      steps {
+        sh "$WORKSPACE/gradlew publish -Pversion=${releaseVersion}"
       }
     }
   }
