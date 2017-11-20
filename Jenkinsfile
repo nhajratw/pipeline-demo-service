@@ -1,6 +1,8 @@
 pipeline {
   agent any
 
+  environment { releaseVersion = "1.0.$BUILD_NUMBER" }
+
   stages {
     stage('clean') {
       steps {
@@ -23,7 +25,7 @@ pipeline {
 
     stage('create artifact') {
       steps {
-        sh "$WORKSPACE/gradlew assemble"
+        sh "$WORKSPACE/gradlew -Pversion=${releaseVersion} assemble"
       }
     }
   }
