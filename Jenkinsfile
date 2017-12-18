@@ -28,5 +28,12 @@ pipeline {
       }
     }
 
+    stage('publish artifact') {
+      steps {
+        sh "$WORKSPACE/gradlew publish -Pversion=${releaseVersion}"
+      }
+    }
+
+
   }
 }
