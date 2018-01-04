@@ -37,7 +37,6 @@ public class PipelineDemoControllerIT {
 	@Before
 	public void setup() {
 		entity = this.testRestTemplate.getForEntity("http://localhost:" + this.port + "/cd", Map.class);
-
 	}
 
 	@Test
