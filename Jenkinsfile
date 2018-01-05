@@ -39,6 +39,7 @@ pipeline {
         sh """
           cf login -a api.local.pcfdev.io --skip-ssl-validation -u admin -p admin -o demo -s pipeline-demo
           cf push pipeline-demo-service-a -p $WORKSPACE/build/libs/pipeline-demo-service-${releaseVersion}.jar
+          cf map-route pipeline-demo-service-a local.pcfdev.io --hostname pipeline-demo-service
         """
       }
     }
