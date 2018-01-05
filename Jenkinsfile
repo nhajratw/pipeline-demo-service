@@ -29,5 +29,10 @@ pipeline {
         sh "$WORKSPACE/gradlew assemble -Pversion=$releaseVersion"
       }
     }
+    stage('publish') {
+      steps {
+        sh "$WORKSPACE/gradlew publish -Pversion=$releaseVersion"
+      }
+    }
   }
 }
