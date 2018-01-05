@@ -14,7 +14,12 @@ pipeline {
     }
     stage('microtests'){
       steps{
-         sh "$WORKSPACE/gradlew test"
+        sh "$WORKSPACE/gradlew test"
+      }
+    }
+    stage('integration tests') {
+      steps {
+        sh "$WORKSPACE/gradlew integrationTest"
       }
     }
   }
