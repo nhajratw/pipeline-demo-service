@@ -41,12 +41,12 @@ public class PipelineDemoControllerIT {
 
 	@Test
 	public void returns200() {
-//		then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
+		then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
 
 	@Test
 	public void responseIsCorrect() {
-//		assertThat(entity.getBody().get("topic"), is("Building a Continuous Deployment Pipeline from Scratch"));
-//		assertThat(entity.getBody().get("presenter"), is("Nayan Hajratwala"));
+		assertThat(entity.getBody().get("topic"), is("Building a Continuous Deployment Pipeline from Scratch"));
+		assertThat(entity.getBody().get("presenter"), is("Nayan Hajratwala"));
 	}
 }
