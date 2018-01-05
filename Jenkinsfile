@@ -37,7 +37,7 @@ pipeline {
     stage('deploy a') {
       steps {
         sh """
-          cf login -a api.local.pcfdev.io --skip-ssl-validation -u admin -p admin -o demo -s pipeline
+          cf login -a api.local.pcfdev.io --skip-ssl-validation -u admin -p admin -o demo -s pipeline-demo
           cf push pipeline-demo-service-a -p $WORKSPACE/build/libs/pipeline-demo-service-${releaseVersion}.jar
         """
       }
