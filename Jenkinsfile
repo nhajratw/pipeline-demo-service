@@ -13,9 +13,11 @@ pipeline {
       }
     }
     stage('tests'){
-      steps{
+      steps {
+        sh "testVar='nayan'"
         sh "$WORKSPACE/gradlew test"
         sh "$WORKSPACE/gradlew integrationTest"
+        sh "echo $testVar"
       }
     }
   }
