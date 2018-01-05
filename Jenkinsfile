@@ -12,12 +12,19 @@ pipeline {
         git url:'/Users/nayan/Documents/workspace/pipeline-demo/pipeline-demo-service', branch:'il20180104'
       }
     }
-    stage('tests'){
+    stage('micro tests'){
+      steps{
+        sh "$WORKSPACE/gradlew test"
+      }
+    }
+    stage('integration tests') {
       steps {
-        sh "testVar='nayan'"
-        sh 'echo $testVar'
-        // sh "$WORKSPACE/gradlew test"
-        // sh "$WORKSPACE/gradlew integrationTest"
+        sh "$WORKSPACE/gradlew integrationTest"
+      }
+    }
+    stage('artifacts'){
+      steps{
+        sh "$WORKSPACE/gradlew assemble"
       }
     }
   }
