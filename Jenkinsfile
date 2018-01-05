@@ -10,7 +10,11 @@ pipeline {
     stage('pull') {
       steps {
         git url:'/Users/nayan/Documents/workspace/pipeline-demo/pipeline-demo-service', branch:'il20180104'
-
+      }
+    }
+    stage('microtests'){
+      steps{
+         sh "$WORKSPACE/gradlew test"
       }
     }
   }
